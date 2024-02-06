@@ -18,10 +18,10 @@ class ProjectsTableSeeder extends Seeder
 
         for ($i = 0; $i < 20; $i++) {
             $project = new Project();
-            $project->title = $faker->sentence(4);
+            $project->title = $faker->sentence(3);
             $project->description = $faker->paragraph();
             $project->slug = Str::of($project->title)->slug('-');
-            $project->tecnologies_stack = $faker->words(3, true);
+            $project->technologies_stack = $faker->words(3, true);
             $project->save();
         }
     }

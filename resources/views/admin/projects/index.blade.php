@@ -22,7 +22,7 @@
                     <tr>
                         <td>{{ $project->id }}</th>
                         <td>{{ $project->title }}</td>
-                        <td>{{ $project->tecnologies_stack }}</td>
+                        <td>{{ $project->technologies_stack }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -30,9 +31,24 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectRequest $request)
+    public function store(Request $request)
     {
-        //
+        $project = new Project();
+        $project->fill($request->all());
+        $project->slug = Str::of($project->title)->slug('-');
+        switch ($request['application_type']) {
+            case '1':
+                $project->is_frontend = true;
+                break;
+            case '2':
+                $project->is_backend = true;
+                break;
+            case '3':
+                $project->is_monolith = true;
+                break;
+        }
+        $project->save();
+        return redirect()->route('admin.projects.index');
     }
 
     /**
