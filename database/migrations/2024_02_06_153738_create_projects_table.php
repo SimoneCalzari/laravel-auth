@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
 
             $table->string('title', 50)->unique();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('slug', 100);
             $table->string('tecnologies_stack', 50)->nullable();
-            $table->boolean('is_frontend')->default(false);
-            $table->boolean('is_backend')->default(false);
-            $table->boolean('is_monolith')->default(false);
+            $table->boolean('is_frontend')->nullable();
+            $table->boolean('is_backend')->nullable();
+            $table->boolean('is_monolith')->nullable();
 
             $table->timestamps();
         });
