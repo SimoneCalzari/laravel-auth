@@ -12,29 +12,63 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title">
+                <input type="text" class="form-control @error('title') is-invalid  @enderror" id="title"
+                    name="title" required value="{{ old('title') }}">
             </div>
+            @error('title')
+                @foreach ($errors->get('title') as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @enderror
             <div class="mb-3">
                 <label for="stack" class="form-label">Technologies Stack</label>
-                <input type="text" class="form-control" id="stack" name="technologies_stack">
+                <input type="text" class="form-control @error('technologies_stack') is-invalid  @enderror" id="stack"
+                    name="technologies_stack" required value="{{ old('technologies_stack') }}">
             </div>
+            @error('technologies_stack')
+                @foreach ($errors->get('technologies_stack') as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Project Description</label>
-                <textarea class="form-control" style="height: 100px" id="description" name="description"></textarea>
+                <textarea class="form-control @error('description') is-invalid  @enderror" style="height: 100px" id="description"
+                    name="description" required>{{ old('description') }}</textarea>
             </div>
+            @error('description')
+                @foreach ($errors->get('description') as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @enderror
             <h5 class="fw-lighter">Project Type</h5>
             <div class="mb-2 form-check">
-                <input type="radio" class="form-check-input" id="frontEnd" value="1" name="application_type">
+                <input type="radio" class="form-check-input" id="frontEnd" value="1" name="application_type"
+                    required @if (old('application_type') === '1') checked @endif>
                 <label class="form-check-label" for="frontEnd">Front End</label>
             </div>
             <div class="mb-2 form-check">
-                <input type="radio" class="form-check-input" id="backEnd" value="2" name="application_type">
+                <input type="radio" class="form-check-input" id="backEnd" value="2" name="application_type"
+                    @if (old('application_type') === '2') checked @endif>
                 <label class="form-check-label" for="backEnd">Back End</label>
             </div>
             <div class="mb-4 form-check">
-                <input type="radio" class="form-check-input" id="fullStack" value="3" name="application_type">
+                <input type="radio" class="form-check-input" id="fullStack" value="3" name="application_type"
+                    @if (old('application_type') === '3') checked @endif>
                 <label class="form-check-label" for="fullStack">Full Stack</label>
             </div>
+            @error('application_type')
+                @foreach ($errors->get('application_type') as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @enderror
             <button type="submit" class="btn btn-dark">Submit</button>
         </form>
     </div>

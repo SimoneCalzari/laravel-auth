@@ -31,10 +31,11 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
+        $request_validated = $request->validated();
         $project = new Project();
-        $project->fill($request->all());
+        $project->fill($request_validated);
         $project->slug = Str::of($project->title)->slug('-');
         switch ($request['application_type']) {
             case '1':
