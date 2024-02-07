@@ -49,7 +49,7 @@ class ProjectController extends Controller
                 break;
         }
         $project->save();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('new_record', "Il progetto $project->title è stato aggiunto ai tuoi progetti");
     }
 
     /**
@@ -76,7 +76,7 @@ class ProjectController extends Controller
 
         $data_validated = $request->validated();
 
-        $project->slug = Str::of($project->title)->slug('-');
+
         switch ($request['application_type']) {
             case '1':
                 $project->is_frontend = true;
@@ -96,7 +96,9 @@ class ProjectController extends Controller
         }
 
         $project->update($data_validated);
-        return redirect()->route('admin.projects.show', $project);
+        $project->slug = Str::of($project->title)->slug('-');
+
+        return redirect()->route('admin.projects.show', $project)->with('update_record', "Il progetto $project->title è stato aggiornato");
     }
 
     /**
@@ -104,7 +106,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $project_deleted = $project->title;
         $project->delete();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('delete_record', "Il progetto $project_deleted è stato rimosso dai tuoi progetti");
     }
 }

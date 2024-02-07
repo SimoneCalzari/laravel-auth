@@ -7,6 +7,11 @@
             <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">Back to Projects<i
                     class="fa-solid fa-backward ms-3"></i></a>
         </div>
+        @if (session('update_record'))
+            <div class="alert alert-success" role="alert">
+                {{ session('update_record') }}
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Title</h5>

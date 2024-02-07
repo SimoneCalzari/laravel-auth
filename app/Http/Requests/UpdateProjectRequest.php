@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Project;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Http\Request;
 
 class UpdateProjectRequest extends FormRequest
 {

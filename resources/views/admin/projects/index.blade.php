@@ -8,6 +8,16 @@
             <a href="{{ route('admin.projects.create') }}" class="btn btn-dark">New Project<i
                     class="fa-solid fa-plus ms-3"></i></a>
         </div>
+        @if (session('new_record'))
+            <div class="alert alert-success" role="alert">
+                {{ session('new_record') }}
+            </div>
+        @endif
+        @if (session('delete_record'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('delete_record') }}
+            </div>
+        @endif
 
         <table class="table table-bordered table-dark table-striped">
             <thead>

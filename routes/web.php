@@ -20,10 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// ROTTA DEFAULT LARAVEL PER LA DASHBOARD DI UTENTI AUTORIZZATI E VERIFICATI SENZA CONTROLLER
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
