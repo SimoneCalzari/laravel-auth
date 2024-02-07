@@ -44,12 +44,56 @@
                         <td>
                             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary">Edit</a>
                         </td>
-                        <td>
+                        {{-- <td>
                             <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger">Delete</button>
                             </form>
+                        </td> --}}
+                        <td>
+                            <!-- FORM CANCELLAZIONE RIGA  -->
+                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <!-- BUTTON CHE APRE LA MODALE -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#modale-delete{{ $project['id'] }}">
+                                    Delete
+                                </button>
+                                <!-- /BUTTON CHE APRE LA MODALE -->
+                                <!-- MODALE -->
+                                <div class="modal fade" id="modale-delete{{ $project['id'] }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content text-black">
+                                            <!-- MODALE HEADER -->
+                                            <div class="modal-header">
+                                                <h3 class="modal-title fs-5">Delete project Confirmation</h3>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <!-- /MODALE HEADER -->
+                                            <!-- MODALE BODY -->
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete {{ $project['title'] }}?</p>
+                                            </div>
+                                            <!-- /MODALE BODY -->
+                                            <!-- MODALE FOOTER -->
+                                            <div class="modal-footer">
+                                                <!-- BUTTON CHIUSURA MODALE -->
+                                                <button type="button" class="btn btn-primary"
+                                                    data-bs-dismiss="modal">No</button>
+                                                <!-- /BUTTON CHIUSURA MODALE -->
+                                                <!-- BUTTON SUBMIT FORM PER CANCELLARE RIGA -->
+                                                <button type="submit" class="btn btn-danger">Yes</button>
+                                                <!-- /BUTTON SUBMIT FORM PER CANCELLARE RIGA -->
+                                            </div>
+                                            <!-- /MODALE FOOTER -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /MODALE -->
+                            </form>
+                            <!-- /FORM CANCELLAZIONE RIGA  -->
                         </td>
                     </tr>
                 @endforeach
