@@ -55,25 +55,48 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, string $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+
+        $data_validated = $request->validated();
+
+        $project->slug = Str::of($project->title)->slug('-');
+        switch ($request['application_type']) {
+            case '1':
+                $project->is_frontend = true;
+                $project->is_backend = false;
+                $project->is_monolith = false;
+                break;
+            case '2':
+                $project->is_frontend = false;
+                $project->is_backend = true;
+                $project->is_monolith = false;
+                break;
+            case '3':
+                $project->is_frontend = true;
+                $project->is_backend = true;
+                $project->is_monolith = false;
+                break;
+        }
+
+        $project->update($data_validated);
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**

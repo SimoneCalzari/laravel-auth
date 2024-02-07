@@ -15,14 +15,20 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Stack</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($projects as $project)
-                    <tr>
+                    <tr class="align-middle">
                         <td>{{ $project->id }}</th>
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->technologies_stack }}</td>
+                        <td>
+                            <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-secondary mx-2">Details</a>
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary mx-2">Edit</a>
+
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
