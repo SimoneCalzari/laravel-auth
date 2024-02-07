@@ -3,13 +3,17 @@
 
 @section('content')
     <div class="container">
+        <!-- TITOLO - TORNA AI PROGETTI -->
         <div class="d-flex align-items-center justify-content-between">
             <h1 class="fs-2 py-2">New Project Form</h1>
             <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">Back to Projects<i
                     class="fa-solid fa-backward ms-3"></i></a>
         </div>
+        <!-- /TITOLO - TORNA AI PROGETTI -->
+        <!-- FORM -->
         <form action="{{ route('admin.projects.store') }}" method="POST">
             @csrf
+            <!-- TITOLO -->
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control @error('title') is-invalid  @enderror" id="title"
@@ -22,6 +26,8 @@
                     </div>
                 @endforeach
             @enderror
+            <!-- TITOLO -->
+            <!-- STACK -->
             <div class="mb-3">
                 <label for="stack" class="form-label">Technologies Stack</label>
                 <input type="text" class="form-control @error('technologies_stack') is-invalid  @enderror" id="stack"
@@ -34,6 +40,8 @@
                     </div>
                 @endforeach
             @enderror
+            <!-- /STACK -->
+            <!-- DESCRIPTION -->
             <div class="mb-3">
                 <label for="description" class="form-label">Project Description</label>
                 <textarea class="form-control @error('description') is-invalid  @enderror" style="height: 100px" id="description"
@@ -46,6 +54,8 @@
                     </div>
                 @endforeach
             @enderror
+            <!-- /DESCRIPTION -->
+            <!-- TYPE RADIO -->
             <h5 class="fw-lighter">Project Type</h5>
             <div class="mb-2 form-check">
                 <input type="radio" class="form-check-input" id="frontEnd" value="1" name="application_type"
@@ -69,7 +79,11 @@
                     </div>
                 @endforeach
             @enderror
+            <!-- TYPE RADIO -->
+            <!-- SUBMIT -->
             <button type="submit" class="btn btn-dark">Submit</button>
+            <!-- /SUBMIT -->
         </form>
+        <!-- /FORM -->
     </div>
 @endsection

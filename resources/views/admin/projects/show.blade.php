@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <!-- TITOLO - TORNA AI PROGETTI - ALERT -->
         <div class="d-flex align-items-center justify-content-between">
             <h1 class="fs-2 py-2">{{ $project->title }}</h1>
             <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">Back to Projects<i
@@ -12,6 +13,8 @@
                 {{ session('update_record') }}
             </div>
         @endif
+        <!-- /TITOLO - TORNA AI PROGETTI - ALERT -->
+        <!-- CARD -->
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Title</h5>
@@ -30,8 +33,11 @@
                         Fullstack
                     @endif
                 </p>
+                <!-- EDIT-->
                 <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary">Edit</a>
+                <!-- /EDIT -->
             </div>
         </div>
+        <!-- /CARD -->
     </div>
 @endsection

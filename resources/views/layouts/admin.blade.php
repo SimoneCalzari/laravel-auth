@@ -23,10 +23,11 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
-    <div id="app">
-
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+<body class="vh-100">
+    <div id="app" class="h-100 d-flex flex-column">
+        <!-- HEADER PRINCIPALE -->
+        <header class="navbar navbar-dark  bg-dark flex-md-nowrap p-2 shadow">
+            <!-- CONTENUTO HEADER FISSO -->
             <div class="row justify-content-between">
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolFolio</a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
@@ -35,6 +36,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
+            <!-- /CONTENUTO HEADER FISSO -->
+            <!-- HAMBURGER DELLA NAV BAR PER TABLET E MOBILE -->
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap me-2">
                     <a class="nav-link" href="{{ route('logout') }}"
@@ -47,14 +50,14 @@
                     </form>
                 </div>
             </div>
+            <!-- /HAMBURGER DELLA NAV BAR PER TABLET E MOBILE -->
         </header>
-
-        <div class="container-fluid vh-100">
+        <!-- /HEADER PRINCIPALE -->
+        <!-- CONTAINER NAVBAR E MAIN -->
+        <div class="container-fluid flex-grow-1 overflow-hidden">
             <div class="row h-100">
-                <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+                <!-- NAVBAR PER MODALITA DESKTOP E MAGGIORI -->
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse h-100">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -80,13 +83,15 @@
 
                     </div>
                 </nav>
-
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- /NAVBAR PER MODALITA DESKTOP E MAGGIORI -->
+                <!-- MAIN -->
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto h-100 py-3">
                     @yield('content')
                 </main>
+                <!-- /MAIN -->
             </div>
         </div>
-
+        <!-- /CONTAINER NAVBAR E MAIN -->
     </div>
 </body>
 
