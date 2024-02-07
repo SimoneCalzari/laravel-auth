@@ -24,13 +24,11 @@ class UpdateProjectRequest extends FormRequest
      */
     public function rules(): array
     {
-        $project = Project::where('title', $this->title)->first();
         return [
             'title' => [
                 'required',
                 'max:40',
-                // 'unique:projects',
-                Rule::unique('projects')->ignore($project->id),
+                Rule::unique('projects')->ignore($this->id),
             ],
             'technologies_stack' => 'required|max:45',
             'description' => 'required|max:1000',

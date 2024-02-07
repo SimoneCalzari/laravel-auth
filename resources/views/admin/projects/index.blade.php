@@ -15,6 +15,9 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Stack</th>
+                    <th>Slug</th>
+                    <th></th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -24,10 +27,19 @@
                         <td>{{ $project->id }}</th>
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->technologies_stack }}</td>
+                        <td>{{ $project->slug }}</td>
                         <td>
-                            <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-secondary mx-2">Details</a>
-                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary mx-2">Edit</a>
-
+                            <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-secondary">Details</a>
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary">Edit</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

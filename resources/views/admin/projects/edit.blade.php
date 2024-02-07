@@ -71,7 +71,7 @@
                     </div>
                 @endforeach
             @enderror
-            <button type="submit" class="btn btn-dark">Submit</button>
+            <button type="submit" class="btn btn-dark" name="id" value="{{ $project->id }}">Submit</button>
         </form>
     </div>
 @endsection
