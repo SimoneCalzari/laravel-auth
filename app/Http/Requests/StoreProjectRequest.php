@@ -44,7 +44,7 @@ class StoreProjectRequest extends FormRequest
             'description.required' => 'La descrizione è obbligatoria',
             'description.max' => 'Per la descrizione hai superato il limite di caratteri massimo consentito(:max)',
             'application_type.required' => 'Per il tipo di progetto è necessario selezionare una delle tre opzioni',
-
+            'application_type.in' => 'Basta frugare nell\'inspector HACKER dei miei stivali',
         ];
     }
 }

@@ -5,7 +5,7 @@
     <div class="container">
         <!-- TITOLO - TORNA AI PROGETTI -->
         <div class="d-flex align-items-center justify-content-between">
-            <h1 class="fs-2 py-2">New Project Form</h1>
+            <h1 class="fs-2 py-2">New Project</h1>
             <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">Back to Projects<i
                     class="fa-solid fa-backward ms-3"></i></a>
         </div>
@@ -81,7 +81,7 @@
             @enderror
             <!-- TYPE RADIO -->
             <!-- SUBMIT -->
-            <button type="submit" class="btn btn-dark">Submit</button>
+            <button type="submit" class="btn btn-dark">Create <i class="fa-regular fa-paper-plane ms-1"></i></button>
             <!-- /SUBMIT -->
         </form>
         <!-- /FORM -->

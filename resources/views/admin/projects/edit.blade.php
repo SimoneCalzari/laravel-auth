@@ -83,7 +83,7 @@
             @enderror
             <!-- TYPE RADIO -->
             <!-- SUBMIT -->
-            <button type="submit" class="btn btn-dark">Submit</button>
+            <button type="submit" class="btn btn-dark">Edit <i class="fa-regular fa-paper-plane ms-1"></i></button>
             <!-- /SUBMIT -->
         </form>
         <!-- /FORM -->
