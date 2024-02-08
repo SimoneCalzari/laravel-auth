@@ -68,7 +68,7 @@
                                             </div>
                                             <!-- /MODALE HEADER -->
                                             <!-- MODALE BODY -->
-                                            <div class="modal-body">
+                                            <div class="modal-body text-start">
                                                 <p>Are you sure you want to delete {{ $project['title'] }}?</p>
                                             </div>
                                             <!-- /MODALE BODY -->

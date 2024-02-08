@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -33,9 +34,11 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        $img_path = Storage::put('uploads', $request['project_img']);
         $request_validated = $request->validated();
         $project = new Project();
         $project->fill($request_validated);
+        $project->project_img = $img_path;
         $project->slug = Str::of($project->title)->slug('-');
         switch ($request['application_type']) {
             case '1':
@@ -49,7 +52,7 @@ class ProjectController extends Controller
                 break;
         }
         $project->save();
-        return redirect()->route('admin.projects.index')->with('new_record', "Il progetto $project->title è stato aggiunto ai tuoi progetti");
+        return redirect()->route('admin.projects.index')->with('new_record', "Il progetto $project->title #$project->id è stato aggiunto ai tuoi progetti");
     }
 
     /**
@@ -106,8 +109,12 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->project_img) {
+            Storage::delete($project->project_img);
+        }
         $project_deleted = $project->title;
+        $project_deleted_id = $project->id;
         $project->delete();
-        return redirect()->route('admin.projects.index')->with('delete_record', "Il progetto $project_deleted è stato rimosso dai tuoi progetti");
+        return redirect()->route('admin.projects.index')->with('delete_record', "Il progetto $project_deleted #$project_deleted_id è stato rimosso dai tuoi progetti");
     }
 }

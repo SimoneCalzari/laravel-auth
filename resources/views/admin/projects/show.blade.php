@@ -17,6 +17,15 @@
         <!-- CARD -->
         <div class="card">
             <div class="card-body">
+                <!-- IMMAGINE PROGETTO SE PRESENTE -->
+                @if ($project->project_img)
+                    <h5 class="card-title">Project Picture</h5>
+                    <div class="w-25">
+                        <img src="{{ asset("storage/$project->project_img") }}" alt="{{ "$project->title" }}"
+                            class="img-fluid">
+                    </div>
+                @endif
+                <!-- /IMMAGINE PROGETTO SE PRESENTE -->
                 <h5 class="card-title">Title</h5>
                 <p class="card-text">{{ $project->title }}</p>
                 <h5 class="card-title">Stack</h5>

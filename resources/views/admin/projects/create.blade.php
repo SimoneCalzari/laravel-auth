@@ -11,7 +11,7 @@
         </div>
         <!-- /TITOLO - TORNA AI PROGETTI -->
         <!-- FORM -->
-        <form action="{{ route('admin.projects.store') }}" method="POST">
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- TITOLO -->
             <div class="mb-3">
@@ -56,7 +56,7 @@
             @enderror
             <!-- /DESCRIPTION -->
             <!-- TYPE RADIO -->
-            <h5 class="fw-lighter">Project Type</h5>
+            <h5 class="fs-6 mb-2">Project Type</h5>
             <div class="mb-2 form-check">
                 <input type="radio" class="form-check-input" id="frontEnd" value="1" name="application_type"
                     required @if (old('application_type') === '1') checked @endif>
@@ -67,7 +67,7 @@
                     @if (old('application_type') === '2') checked @endif>
                 <label class="form-check-label" for="backEnd">Back End</label>
             </div>
-            <div class="mb-4 form-check">
+            <div class="mb-3 form-check">
                 <input type="radio" class="form-check-input" id="fullStack" value="3" name="application_type"
                     @if (old('application_type') === '3') checked @endif>
                 <label class="form-check-label" for="fullStack">Full Stack</label>
@@ -80,6 +80,12 @@
                 @endforeach
             @enderror
             <!-- TYPE RADIO -->
+            <!-- UPLOAD IMMAGINE -->
+            <div class="mb-4">
+                <label class="form-label" for="project_img">Project Picture</label>
+                <input type="file" class="form-control" id="project_img" name="project_img">
+            </div>
+            <!-- /UPLOAD IMMAGINE -->
             <!-- SUBMIT -->
             <button type="submit" class="btn btn-dark">Create <i class="fa-regular fa-paper-plane ms-1"></i></button>
             <!-- /SUBMIT -->
