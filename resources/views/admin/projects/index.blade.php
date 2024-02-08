@@ -21,7 +21,7 @@
         @endif
         <!-- /TITOLO - NUOVO PROGETTO - ALERT -->
         <!-- TABLE-->
-        <table class="table table-bordered table-dark table-striped">
+        <table class="table table-bordered table-dark table-striped text-center">
             <!-- TABLE HEAD-->
             <thead>
                 <tr>
@@ -29,8 +29,6 @@
                     <th>Title</th>
                     <th>Stack</th>
                     <th>Slug</th>
-                    <th></th>
-                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -43,21 +41,20 @@
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->technologies_stack }}</td>
                         <td>{{ $project->slug }}</td>
-                        <td>
-                            <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-secondary">Details</a>
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary">Edit</a>
-                        </td>
-                        <td>
+                        <td style="width: 30%">
+                            <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-secondary btn-sm">Details
+                                <i class="fa-solid fa-circle-info ms-1"></i></a>
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary btn-sm mx-2">Edit
+                                <i class="fa-solid fa-pen-to-square ms-1"></i></a>
                             <!-- FORM CANCELLAZIONE RIGA  -->
-                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST"
+                                class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <!-- BUTTON CHE APRE LA MODALE -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#modale-delete{{ $project['id'] }}">
-                                    Delete
+                                    Delete <i class="fa-solid fa-trash-can ms-1"></i>
                                 </button>
                                 <!-- /BUTTON CHE APRE LA MODALE -->
                                 <!-- MODALE -->

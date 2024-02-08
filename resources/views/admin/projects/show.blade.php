@@ -34,7 +34,8 @@
                     @endif
                 </p>
                 <!-- EDIT-->
-                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary">Edit</a>
+                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary">Edit <i
+                        class="fa-solid fa-pen-to-square ms-1"></i></a>
                 <!-- /EDIT -->
             </div>
         </div>
