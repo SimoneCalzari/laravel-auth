@@ -83,7 +83,7 @@
             @enderror
             <!-- TYPE RADIO -->
             <!-- SUBMIT -->
-            <button type="submit" class="btn btn-dark" name="id" value="{{ $project->id }}">Submit</button>
+            <button type="submit" class="btn btn-dark">Submit</button>
             <!-- /SUBMIT -->
         </form>
         <!-- /FORM -->

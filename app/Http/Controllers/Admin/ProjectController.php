@@ -94,9 +94,9 @@ class ProjectController extends Controller
                 $project->is_monolith = false;
                 break;
         }
-
+        $project->slug = Str::of($data_validated['title'])->slug('-');
         $project->update($data_validated);
-        $project->slug = Str::of($project->title)->slug('-');
+
 
         return redirect()->route('admin.projects.show', $project)->with('update_record', "Il progetto $project->title è stato aggiornato");
     }

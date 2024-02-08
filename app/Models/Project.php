@@ -9,5 +9,5 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['application_type', 'id'];
+    protected $guarded = ['slug', 'is_frontend', 'is_backend', 'is_monolith'];
 }
