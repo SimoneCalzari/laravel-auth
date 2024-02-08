@@ -86,6 +86,13 @@
                 <input type="file" class="form-control" id="project_img" name="project_img">
             </div>
             <!-- /UPLOAD IMMAGINE -->
+            @error('project_img')
+                @foreach ($errors->get('project_img') as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @enderror
             <!-- SUBMIT -->
             <button type="submit" class="btn btn-dark">Create <i class="fa-regular fa-paper-plane ms-1"></i></button>
             <!-- /SUBMIT -->

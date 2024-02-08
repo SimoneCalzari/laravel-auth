@@ -30,6 +30,7 @@ class StoreProjectRequest extends FormRequest
                 'required',
                 Rule::in(['1', '2', '3']),
             ],
+            'project_img' => 'image'
         ];
     }
 
@@ -45,6 +46,7 @@ class StoreProjectRequest extends FormRequest
             'description.max' => 'Per la descrizione hai superato il limite di caratteri massimo consentito(:max)',
             'application_type.required' => 'Per il tipo di progetto è necessario selezionare una delle tre opzioni',
             'application_type.in' => 'Basta frugare nell\'inspector HACKER dei miei stivali',
+            'project_img.image' => 'Il file caricato deve essere un\' immagine di un formato tra JPG, JPEG, PNG, BMP, GIF, SVG o WEBP',
         ];
     }
 }

@@ -28,6 +28,8 @@
                 <!-- /IMMAGINE PROGETTO SE PRESENTE -->
                 <h5 class="card-title">Title</h5>
                 <p class="card-text">{{ $project->title }}</p>
+                <h5 class="card-title">Slug</h5>
+                <p class="card-text">{{ $project->slug }}</p>
                 <h5 class="card-title">Stack</h5>
                 <p class="card-text">{{ $project->technologies_stack }}</p>
                 <h5 class="card-title">Description</h5>

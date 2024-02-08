@@ -78,8 +78,6 @@ class ProjectController extends Controller
     {
 
         $data_validated = $request->validated();
-
-
         switch ($request['application_type']) {
             case '1':
                 $project->is_frontend = true;
